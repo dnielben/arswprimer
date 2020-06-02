@@ -1,5 +1,8 @@
 package edu.escuelaing.arsw.intro;
 
+import edu.escuelaing.arsw.intro.linecounter.FileReader;
+import edu.escuelaing.arsw.intro.linecounter.LineCounter;
+import edu.escuelaing.arsw.intro.linecounter.PhysicalLinesCounter;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -29,10 +32,14 @@ public class AppTest
     }
 
     /**
-     * Rigourous Test :-)
+     * Rigourous Test the main method
      */
     public void testApp()
-    {
-        assertTrue( true );
+    {   
+        String file = "src/test/resources/App.java";
+        FileReader fr= new FileReader();
+        LineCounter lc = new PhysicalLinesCounter();        
+        fr.readFile(file, lc);
+        assertTrue( 17 == lc.getLineCount());   
     }
 }
